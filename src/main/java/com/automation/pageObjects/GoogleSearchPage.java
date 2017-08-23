@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class GoogleSearchPage extends AbstractPage {
 
   @FindBy(name = "q")
@@ -13,6 +15,8 @@ public class GoogleSearchPage extends AbstractPage {
   private WebElement searchButton;
   @FindBy(name = "btnI")
   private WebElement feelingLuckyButton;
+  @FindBy(partialLinkText = "Careers")
+  private List<WebElement> links;
 
   public GoogleSearchPage(WebDriver driver) {
     PageFactory.initElements(driver, this);
@@ -23,18 +27,22 @@ public class GoogleSearchPage extends AbstractPage {
     return searchTextBar;
   }
 
-  public GoogleSearchPage inputSearchText(String searchQuery) {
+  public WebElement inputSearchText(String searchQuery) {
     searchTextBar.sendKeys(searchQuery);
-    return this;
+    return searchTextBar;
   }
 
   public WebElement getSearchButton() {
     return searchButton;
   }
 
-  public GoogleResultsPage clickSearch() {
+  public GoogleSearchPage clickSearch() {
     searchButton.click();
-    return new GoogleResultsPage(driver);
+    return this;//new GoogleResultsPage(driver);
+  }
+
+  public WebElement getLink() {
+    return links.get(0);
   }
 
   public WebElement getFeelingLuckyButton() {

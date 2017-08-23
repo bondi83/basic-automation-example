@@ -9,5 +9,6 @@ public class AbstractPage {
   public String getCurrentPageTitle() {
     return driver.getTitle();
   }
+  public String getCurrentURL() {return driver.getCurrentUrl();}
 
 }

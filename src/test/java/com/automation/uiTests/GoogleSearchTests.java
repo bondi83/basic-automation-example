@@ -1,6 +1,5 @@
 package com.automation.uiTests;
 
-import com.automation.pageObjects.GoogleResultsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,8 +12,16 @@ public class GoogleSearchTests extends AbstractUITest {
 
   @Test
   public void doingASimpleSearch() {
-    GoogleResultsPage googleResultsPage = googleSearchPage.inputSearchText("test").clickSearch();
-    Assert.assertTrue(googleResultsPage.getCurrentPageTitle().contains("test"));
+    googleSearchPage.inputSearchText("test");
+    googleSearchPage.clickSearch();
+    Assert.assertTrue(googleSearchPage.getCurrentPageTitle().contains("test"));
+  }
+
+  @Test
+  public void doingAComplexSearch() {
+    googleSearchPage.inputSearchText("mulesoft").submit();
+    googleSearchPage.getLink().click();
+    Assert.assertTrue(googleSearchPage.getCurrentURL().contains("careers"));
   }
 
 }
