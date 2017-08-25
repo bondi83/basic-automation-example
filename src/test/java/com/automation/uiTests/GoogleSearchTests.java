@@ -20,6 +20,7 @@ public class GoogleSearchTests extends AbstractUITest {
   @Test
   public void doingAComplexSearch() {
     googleSearchPage.inputSearchText("mulesoft").submit();
+    Assert.assertTrue(googleSearchPage.getCurrentPageTitle().contains("mulesoft"));
     googleSearchPage.getLink().click();
     Assert.assertTrue(googleSearchPage.getCurrentURL().contains("careers"));
   }
