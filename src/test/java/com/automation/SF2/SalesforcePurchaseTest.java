@@ -23,18 +23,26 @@ public class SalesforcePurchaseTest extends AbstractUITest{
         Assert.assertTrue(salesforcePage.getCurrentPageTitle().contains("Leads"));
     }
     @Test
-    public void createNewLead() {
+    public void createNewOELead() {
         salesforcePage.username(Credentials.getUsername());
         salesforcePage.password(Credentials.getPassword()).submit();
         salesforcePage.clickLeads();
         salesforcePage.newLeadButton().click();
         salesforcePage.selectLeadRecordType(LEAD_RECORD_TYPE_B2B);
         salesforcePage.newLeadContinueButton().click();
-        salesforcePage.leadFirstName();
-        salesforcePage.leadLastName();
-        salesforcePage.leadEmail();
-
-
+        //Assert.assertEquals("Lead Edit",salesforcePage.getCurrentPageTitle());
         Assert.assertTrue(salesforcePage.getCurrentPageTitle().contains("Lead Edit"));
+        leadFormPage.firstName();
+        leadFormPage.lastName();
+        leadFormPage.email();
+        leadFormPage.phone();
+        leadFormPage.setOrganizationDropDown(OPEN_ENGLISH);
+        leadFormPage.company();
+        leadFormPage.setCountryOfResidenceDropDown(PAIS_CHILE);
+        leadFormPage.clickSaveButton();
+
+
+
+
     }
 }

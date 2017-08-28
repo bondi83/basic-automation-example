@@ -29,15 +29,7 @@ public class SalesforcePage extends AbstractPage{
     @FindBy(name = "p3")
     private WebElement leadRecordTypeSelect;
 
-    //leadform
-    @FindBy(xpath = "//*[@name ='name_lastlea2']")
-    private WebElement leadLastName;
-    @FindBy(xpath = "//*[@name ='name_firstlea2']")
-    private WebElement leadFirstName;
-    @FindBy(name = "lea11")
-    private WebElement leadEmail;
-
-    public SalesforcePage(WebDriver driver) {
+        public SalesforcePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
@@ -63,21 +55,6 @@ public class SalesforcePage extends AbstractPage{
         dropdownLeadRecordTypeSelect.selectByVisibleText(rType);
         //dropdownLeadRecordTypeSelect.selectByIndex(1);
         //dropdownLeadRecordTypeSelect.selectByValue("prog");
-    }
-
-    //leadform methods
-    General g =new General();
-    public WebElement leadLastName() {
-        username.sendKeys(g.getAName());
-        return username;
-    }
-    public WebElement leadFirstName() {
-        username.sendKeys(g.getAName());
-        return username;
-    }
-    public WebElement leadEmail() {
-        username.sendKeys(g.getAMail());
-        return username;
     }
 
 }
