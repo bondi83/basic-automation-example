@@ -5,14 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class General {
+public class Personal {
     private String name;
 
     public String getAName(){return "test"+name;}
     public String getAMail(){return "test"+name+"@mailinator.com";}
-    public String getPhone(){return "8456561";}
 
-    public General(){
+
+    public Personal(){
         name= getDate();
     }
 

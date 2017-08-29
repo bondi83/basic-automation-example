@@ -1,6 +1,8 @@
 package com.automation.SF2;
 
 import com.automation.pageObjects.LeadFormPage;
+import com.automation.pageObjects.LeadPage;
+import com.automation.pageObjects.SalesToolPage;
 import com.automation.pageObjects.SalesforcePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,6 +21,8 @@ abstract public class AbstractUITest  {
 
   SalesforcePage salesforcePage;
   LeadFormPage leadFormPage;
+  SalesToolPage salesToolPage;
+  LeadPage leadPage;
   private WebDriver driver;
 
   @BeforeMethod(alwaysRun = true)
@@ -41,5 +45,7 @@ abstract public class AbstractUITest  {
     driver.get(URL);
     salesforcePage = new SalesforcePage(driver);
     leadFormPage=new LeadFormPage(driver);
+    leadPage=new LeadPage(driver);
+    salesToolPage=new SalesToolPage(driver);
   }
 }

@@ -9,7 +9,7 @@
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-    <selenium.version>3.5.1</selenium.version>
+    <selenium.version>3.5.2</selenium.version>
     <chrome.driver.version>3.5.1</chrome.driver.version>
     <rest.assured.version>3.0.3</rest.assured.version>
     <testng.version>6.11</testng.version>
