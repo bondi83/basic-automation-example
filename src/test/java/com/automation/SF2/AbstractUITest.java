@@ -1,5 +1,6 @@
 package com.automation.SF2;
 
+import Helper.Products;
 import com.automation.pageObjects.LeadFormPage;
 import com.automation.pageObjects.LeadPage;
 import com.automation.pageObjects.SalesToolPage;
@@ -17,7 +18,10 @@ abstract public class AbstractUITest  {
    public static final String OPEN_ENGLISH="Open English";
    public static final String OPEN_ENGLISH_JR="Open English Junior";
    public static final String NEXTU="NextU";
-   public static final String PAIS_CHILE="Chile";
+   public static final String COUNTRY_CHILE="Chile";
+  public static final String COUNTRY_ARGENTINA="Argentina";
+  public static final String COUNTRY_BRL="Brazil";
+  public static final String COUNTRY_USA="USA";
 
   SalesforcePage salesforcePage;
   LeadFormPage leadFormPage;
