@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import java.security.Key;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SalesToolPage extends AbstractPage{
 
@@ -81,6 +83,15 @@ public class SalesToolPage extends AbstractPage{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public Set<String> getProductsDropDown(){
+        Select dropdown = new Select(productsDrowDown);
+        Set<String> products=new HashSet<String>();
+        for (WebElement product : dropdown.getOptions()){
+            products.add(product.getText());
+        }
+        return products;
     }
     public void selectDiscount()
     {

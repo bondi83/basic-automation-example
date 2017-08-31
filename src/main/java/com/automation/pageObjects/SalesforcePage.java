@@ -1,5 +1,6 @@
 package com.automation.pageObjects;
 
+import Helper.PublicGroups;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,10 +25,33 @@ public class SalesforcePage extends AbstractPage{
     private WebElement newLeadContinueButton;
     @FindBy(name = "p3")
     private WebElement leadRecordTypeSelect;
+@FindBy(id = "setupLink")
+private WebElement setupButton;
+    @FindBy(xpath = "//div[@id='Users']/a")
+    private WebElement manageUsersArrow;
+    @FindBy(xpath = "//a[contains(@href,'PublicGroups')]")
+    private WebElement publicGroups;
+    @FindBy(linkText = PublicGroups.SALES_NU_MOBILE)
+    private WebElement grousSalesNuMobile;
 
-        public SalesforcePage(WebDriver driver) {
+
+    public SalesforcePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
+    }
+
+    public void clickSetupButton(){
+        setupButton.click();
+    }
+    public void clickGrousSalesNuMobile(){
+        grousSalesNuMobile.click();
+    }
+
+    public void expandManageUser(){
+        manageUsersArrow.click();
+    }
+    public void clickPublicGroups(){
+        publicGroups.click();
     }
 
     public WebElement username(String searchQuery) {

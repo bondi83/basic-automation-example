@@ -28,6 +28,7 @@ abstract public class AbstractUITest  {
   SalesToolPage salesToolPage;
   LeadPage leadPage;
   private WebDriver driver;
+  public Products products;
 
   @BeforeMethod(alwaysRun = true)
   public void beforeMethodSetUp() {
@@ -51,5 +52,6 @@ abstract public class AbstractUITest  {
     leadFormPage=new LeadFormPage(driver);
     leadPage=new LeadPage(driver);
     salesToolPage=new SalesToolPage(driver);
+    products=new Products();
   }
 }

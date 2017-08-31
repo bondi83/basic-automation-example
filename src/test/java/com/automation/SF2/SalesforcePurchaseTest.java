@@ -4,6 +4,8 @@ import Helper.Credentials;
 import Helper.Products;
 import com.automation.pageObjects.SalesToolPage;
 import org.testng.Assert;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import org.testng.annotations.Test;
 
 
@@ -19,11 +21,14 @@ public class SalesforcePurchaseTest extends AbstractUITest{
     private static final String FREQUENCY_UPFRONT="Cash";
     private static final String FREQUENCY_FINANCED="Financed";
 
+    public void loginToSalesforce(){
+        salesforcePage.username(Credentials.getUsername());
+        salesforcePage.password(Credentials.getPassword()).submit();
+    }
 
     @Test
     public void createNewOELead() {
-        salesforcePage.username(Credentials.getUsername());
-        salesforcePage.password(Credentials.getPassword()).submit();
+        loginToSalesforce();
         salesforcePage.clickLeads();
         salesforcePage.newLeadButton().click();
         salesforcePage.selectLeadRecordType(LEAD_RECORD_TYPE_STUDENT);
@@ -58,7 +63,27 @@ public class SalesforcePurchaseTest extends AbstractUITest{
         salesToolPage.selectDiscount();
         salesToolPage.clicSelectProductButton();
         salesToolPage.clicAssingToBuyer();
+        //Assert.assertEquals(salesToolPage.getProductsDropDown().size(),products.getUpfrontProducts().size());
+        assertThat("Products in DropDown expected",
+                salesToolPage.getProductsDropDown(),
+                containsInAnyOrder(products.getUpfrontProducts().toArray()));
+        /*
+        for (String prodcutExpected : products.getUpfrontProducts()){
+            for (String productInDropDown : salesToolPage.getProductsDropDown()){
+
+            }
+        }
+        */
         Assert.assertEquals(salesToolPage.getConfirmationRatePlan(),Products.NU_Mobile_Suite_V3_Upfront_6M);
 
+    }
+    @Test
+    public void logWithAnAgent(){
+        loginToSalesforce();
+        salesforcePage.clickSetupButton();
+        salesforcePage.expandManageUser();
+        salesforcePage.clickPublicGroups();
+        Assert.assertTrue(salesforcePage.getCurrentPageTitle().contains("Public Groups"));
+        salesforcePage.clickGrousSalesNuMobile();
     }
 }
